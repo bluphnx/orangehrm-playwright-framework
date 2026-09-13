@@ -22,3 +22,7 @@ git rm --cached .env
 git rm --cached .gitignore
 
 git commit -m "push project structure"
+git push origin qa1
+
+git pull origin main --allow-unrelated-histories
+
