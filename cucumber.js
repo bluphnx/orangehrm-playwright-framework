@@ -1,4 +1,4 @@
-Module.exports = {
+module.exports = {
   default: {
     require       : ["src/step-definitions/**/*.ts", "src/hooks/**/*.ts"],
     path          : ["features/**/*.feature"],

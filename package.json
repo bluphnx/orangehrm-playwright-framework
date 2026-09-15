@@ -3,7 +3,9 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "cucumbertest": "npx cucumber-js"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -12,7 +14,9 @@
     "@cucumber/cucumber": "^13.2.1",
     "@playwright/test": "^1.63.0",
     "@types/node": "^26.5.1",
-    "cross-env": "^10.1.0"
+    "cross-env": "^10.1.0",
+    "ts-node": "^10.9.2",
+    "typescript": "^5.9.3"
   },
   "dependencies": {
     "dotenv": "^17.4.2"

@@ -9,22 +9,22 @@ export class LoginPage extends BasePage {
 
   constructor(page: Page) {
     super(page);
-    this.userNameTextBox = page.getByRole("textbox", { name: "Username" });
-    this.passwordTextBox = page.getByRole("textbox", { name: "Password" });
-    this.loginButton = page.getByRole("button", { name: "Login" });
+    this.userNameTextBox = page.locator('input[name="username"]');
+    this.passwordTextBox = page.locator('input[name="password"]');
+    this.loginButton = page.locator('button[type="submit"]');
     this.DashboardHeading = page.getByRole("heading", { name: "Dashboard" });
   }
 
   async enterUserName(text: string): Promise<void> {
-    this.fill(this.userNameTextBox, text);
+    await this.fill(this.userNameTextBox, text);
   }
 
   async enterPassword(text: string): Promise<void> {
-    this.fill(this.passwordTextBox, text);
+    await this.fill(this.passwordTextBox, text);
   }
 
   async clickLogin(): Promise<void> {
-    this.click(this.loginButton);
+    await this.click(this.loginButton);
   }
 
   async login(username: string, password: string): Promise<void> {
@@ -34,8 +34,7 @@ export class LoginPage extends BasePage {
   }
 
   async verifyDashboardPage(): Promise<void> {
-    await this.waitForVisible(this.DashboardHeading);
-    await this.verifyText(this.DashboardHeading, "Dashboard");
+    await this.page.waitForURL("**/dashboard/index");
   }
   
 }

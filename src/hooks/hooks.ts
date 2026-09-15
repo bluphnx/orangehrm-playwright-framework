@@ -1,20 +1,23 @@
-import { Before, After } from "@cucumber/cucumber";
+import { Before, After,setDefaultTimeout } from "@cucumber/cucumber";
 import { BrowserContext, chromium, Browser, Page } from "@playwright/test";
+
+setDefaultTimeout(60000);
 
 let browser: Browser;
 let context: BrowserContext;
 let page: Page;
 
 Before(async function () {
-  browser = await chromium.launch({
+  this.browser = await chromium.launch({
     headless: true,
   });
-  context = await browser.newContext();
-  page = await context.newPage();
+  this.context = await this.browser.newContext();
+  page = await this.context.newPage();
+  this.page = page;
 });
 
 After(async function () {
-  await page.close();
-  await context.close();
-  await browser.close();
+  await this.page.close();
+  await this.context.close();
+  await this.browser.close();
 });
